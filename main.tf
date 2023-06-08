@@ -3,22 +3,21 @@ provider "aws" {
 }
 
 module "webserver" {
-  source = "/root/modules/project11/ec2"
+  source = "/root/modules/project/ec2"
   subnet = module.vpc.subnet_id
   security-group = module.security-group.security_group_id
 }
 
 module "vpc" {
-  source = "/root/modules/project11/vpc"
+  source = "/root/modules/project/vpc"
   cidr = var.cidr
   subnet = var.subnet
 }
 
 module "security-group" {
-  source = "/root/modules/project11/sg"
+  source = "/root/modules/project/sg"
   vpc = module.vpc.vpc_id
 }
-
 
 
 variable "cidr" {
